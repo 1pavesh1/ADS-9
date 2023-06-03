@@ -10,8 +10,7 @@ std::ifstream file(filename);
         std::string copy;
         std::string word;
         std::string clear;
-        while (!file.eof())
-        {
+        while (!file.eof()) {
             std::getline(file, copy);
             for (size_t i = 0; i < copy.size(); ++i) {
                 if (copy[i] >= 65 && copy[i] <= 90 || copy[i] >= 97 && copy[i] <= 122) {
