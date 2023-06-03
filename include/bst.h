@@ -5,7 +5,7 @@
 #include <algorithm>
 template <typename T>
 class BST {
-private:
+ private:
     struct node {
         T word;
         int count;
@@ -14,7 +14,7 @@ private:
     node *root;
     int Depth;
 
-public:
+ public:
     BST() {
         root = nullptr;
         Depth = 0;
@@ -53,8 +53,7 @@ public:
             }
         }
     }
-    int height(node* root)
-    {
+    int height(node* root) {
         if (root == nullptr) {
             return 0;
         }
