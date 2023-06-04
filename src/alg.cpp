@@ -8,7 +8,7 @@
 #include  "bst.h"
 template <typename T>
 class BST {
-private:
+ private:
     struct node {
         T word;
         int count;
@@ -16,7 +16,7 @@ private:
     };
     node *root;
     int Depth;
-public:
+ public:
     BST() {
         root = nullptr;
         Depth = 0;
