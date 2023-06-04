@@ -4,12 +4,10 @@
 #include <string>
 #include <locale>
 #include <cstdlib>
-#include <algorithm> 
+#include <algorithm>
 template <typename T>
 class BST {
-
 private:
-
     struct node {
         T word;
         int count;
@@ -17,9 +15,7 @@ private:
     };
     node *root;
     int Depth;
-
 public:
-
     BST() {
         root = nullptr;
         Depth = 0;
