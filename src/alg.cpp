@@ -5,6 +5,7 @@
 #include <locale>
 #include <cstdlib>
 #include <algorithm>
+#include  "bst.h"
 template <typename T>
 class BST {
 private:
