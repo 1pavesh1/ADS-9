@@ -1,30 +1,29 @@
 // Copyright 2021 NNTU-CS
-#include  <cstdlib>
+#include  <iostream>
 #include  <fstream>
+#include  <locale>
+#include  <cstdlib>
 #include  "bst.h"
-#include  <fstream> 
 
 BST<std::string> makeTree(const char* filename) {
-    BST<std::string> bst;
+    BST<std::string> tree;
+
     std::ifstream file(filename);
-    std::string output;
+    if (!file) {
+        std::cout << "File error!" << std::endl;
+    }
+
+    std::string countwords;
+
     while (!file.eof()) {
-        char str = file.get();
-        if (str >= 65 && str <= 90) {
-            str += 32;
-            output += str;
-            continue;
-        }
-        if (str >= 97 && str <= 122) {
-            output += str;
+        char ch = tolower(file.get());
+        if (isalpha(ch)) {
+            countwords = countwords + ch;
         } else {
-            if (!output.empty()) {
-                bst.addVal(output);
-            }
-            output.clear();
+            tree.add(countwords);
+            countwords.clear();
         }
     }
-    bst.addVal(output);
     file.close();
-    return bst;
+    return tree;
 }
