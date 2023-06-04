@@ -1,38 +1,30 @@
 // Copyright 2021 NNTU-CS
-#include  <iostream>
-#include  <fstream>
-#include  <locale>
 #include  <cstdlib>
+#include  <fstream>
 #include  "bst.h"
+#include  <fstream> 
+
 BST<std::string> makeTree(const char* filename) {
-  BST <std::string> tree;
-  std::ifstream file(filename);
- if (!file) {
-   std::cout << "File error!" << std::endl;
-   return tree;
- } else {
-  if (!file) {
-    std::cout << "File error!" << std::endl;
-    return tree;
-  } else {
-     while (!file.eof()) {
-     std::string temp = "";
-     while(true) {
-     while (true) {
-       char ch;
-       ch = file.get();
-       if (ch >= 'a' && ch <= 'z') {
-         temp += ch;
-       } else if (ch >= 'A' && ch <= 'Z') {
-           ch= tolower(ch);
-           ch = tolower(ch);
-           temp += ch;
-                    } else {
-                        break;
-                     }
-                }
-                tree.add(temp);
+    BST<std::string> bst;
+    std::ifstream file(filename);
+    std::string output;
+    while (!file.eof()) {
+        char str = file.get();
+        if (str >= 65 && str <= 90) {
+            str += 32;
+            output += str;
+            continue;
         }
-        return tree;
+        if (str >= 97 && str <= 122) {
+            output += str;
+        } else {
+            if (!output.empty()) {
+                bst.addVal(output);
+            }
+            output.clear();
+        }
     }
+    bst.addVal(output);
+    file.close();
+    return bst;
 }
